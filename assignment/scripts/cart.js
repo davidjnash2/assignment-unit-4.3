@@ -45,9 +45,28 @@ listItems(basket); //test listItems function
 
 
 
+function empty(basket){ //name function and set argument
+    for (i=0; i<basket.length; i++){ //start loop increment to cycle through array
+        basket.pop(i); //remove each item from basket
+    } //end loop
+    return basket; //function return
+} //end empty(basket) function
+
+empty(basket); //fun function
+
+console.log(`should expect basket array to be empty now ${basket}`); //test result of empty(basket) function
+//seems to work as instructed, but I'm not confident the way it's coded is correct; maybe I'm just accidentally getting the correct result.
+
+//Below, testing both functions in conjuction, adding item back to basket and removing again. 
+//Seems to be working, as far as I can tell via my console.
+
+console.log(`Basket is ${basket}`); //test addItem function
+console.log('Adding apples (expect true)', addItem('apples')); //test addItem function
+console.log(`Basket is now ${basket}`); //test 
+
 function empty(basket){
-    for (i=0; i<basket.length; i++){
-        basket.pop();
+    for (i=0; i=basket.length; i++){
+        basket.pop(i);
     }
     return basket;
 }
