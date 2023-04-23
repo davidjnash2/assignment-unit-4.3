@@ -3,16 +3,30 @@ console.log('***** Cart Functions *****');
 // We want to see how you are testing your code!!!
 
 let basket = []; //set basket as empty array
+const maxItems = 5; //set constant for basket max
+
+function isFull(basket){ //name and set argument for function
+   let result = false; //set default result
+    if (basket.length>=maxItems){ //set terms for conditional
+        result = true; //result if conditions are met
+    } //end conditional
+     return result; //function return
+} //end full(basket) function
+
+
 function addItem( item ){ //name function and add argument
-    basket.push( item ); //command to add each item to basket array
-    let result = false; //set defalut result
-    for (i=0; i<basket.length; i++){ //start loop
-        if (item === basket[i]){ //conditional to check if item has been added to basket array
-        result = true //define result as true if item is added
-        } // end conditional
-    } //end loop
-    return result //result of function
-} //end function
+    let result = false; //set default
+    if (!isFull(basket)){ //use false result of isFull(basket) function as condtion
+        basket.push( item ); //command to add each item to basket array
+            for (i=0; i<basket.length; i++){ //start loop
+                if (item === basket[i]){ //conditional to check if item has been added to basket array
+                 return true //define result as true if item is added
+                } //end basket check
+        } //end loop adding items
+    } //end conditional
+    return result //function result
+}; //end addItem function
+
 
 
 console.log(`Basket is ${basket}`); //test addItem function
@@ -64,13 +78,37 @@ console.log(`Basket is ${basket}`); //test addItem function
 console.log('Adding apples (expect true)', addItem('apples')); //test addItem function
 console.log(`Basket is now ${basket}`); //test 
 
-function empty(basket){
-    for (i=0; i=basket.length; i++){
-        basket.pop(i);
-    }
-    return basket;
-}
-empty(basket);
+function empty(basket){ //name function and set parameter
+    for (i=0; i=basket.length; i++){ //set conditional
+        basket.pop(i); //function action to remove item
+    } //end conditional
+    return basket; //result of function empty(basket)
+} //end empty(basket)
 
-console.log(`should expect basket array to be empty now ${basket}`);
+empty(basket); //run function
+
+console.log(`should expect basket array to be empty now ${basket}`); //test
+console.log(basket) //test
+
+function isFull(basket){ //name and set argument for function
+    result = false; //set default result
+    if (basket.length>=maxItems){ //set terms for conditional
+        result = true //result if conditions are met
+    } //end conditional
+     return result //function return
+} //end full(basket) function
+
+console.log('Because ', basket, 'is empty right now, expect full(basket) to return false.', isFull(basket), 
+    'meaning it is not full and we can add more items.'); //testing full(basket) function
+
+addItem('bananas'); //adding items back to test
+addItem('apples'); //adding items back to test
+addItem('peaches'); //adding items back to test
+addItem('pears'); //adding items back to test
+addItem('plums'); //adding items back to test
+addItem('cherries'); //adding items back to test
+
+console.log('Testing by trying to add 6 items, so if functions work correctly, the basket should reach full with the 5 following items: ', basket, ' and it should state that it is truly full:', isFull(basket));
+
+
 
