@@ -109,6 +109,19 @@ addItem('plums'); //adding items back to test
 addItem('cherries'); //adding items back to test
 
 console.log('Testing by trying to add 6 items, so if functions work correctly, the basket should reach full with the 5 following items: ', basket, ' and it should state that it is truly full:', isFull(basket));
+console.log(basket);
 
+function removeItem( item ){ //name function and set argument
+   let result = null; //set default answer
+   const index = basket.indexOf(item); //assign index variable to matching items of basket array
+   if (index !== -1){ //set conditional such that if index value is not '-1', meaning if it exists anywhere in the basket array, it is a match
+        basket.splice(index, 1); //remove item found only at that 1 particular index value
+        result = item; //name item removed
+        } //end conditional
+    return result; //give result of function
+} //end removeItem function
 
-
+console.log('removing apples from basket gives result of removeItem: ', removeItem('apples')); //test for known item apples
+console.log(basket); //log basket array to test function removed item from array
+console.log('trying to remove cherries from basket gives result of removeItem: ', removeItem('cherries')); //test function with item not in basket
+console.log('item removed was: ', removeItem('peaches'), 'so remaining basket is', basket); //test function and array together
